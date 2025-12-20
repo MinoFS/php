@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables et types de données</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #4285F4;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #4285F4;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #4285F4;
+            font-weight: 600;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .code-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .code-container {
+            background-color: #2d2d2d;
+            border-radius: 6px;
+            padding: 20px;
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 1.5;
+            overflow: auto;
+            flex-grow: 1;
+        }
+        .php-tag {
+            color: #f92672;
+        }
+        .php-keyword {
+            color: #66d9ef;
+        }
+        .php-string {
+            color: #a6e22e;
+        }
+        .php-comment {
+            color: #75715e;
+            font-style: italic;
+        }
+        .php-number {
+            color: #ae81ff;
+        }
+        .php-variable {
+            color: #fd971f;
+        }
+        .types-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .type-box {
+            background-color: #e8f0fe;
+            border: 2px solid #4285F4;
+            border-radius: 8px;
+            padding: 15px;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+        .type-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: #4285F4;
+            margin-bottom: 10px;
+        }
+        .type-desc {
+            font-size: 16px;
+            color: #555;
+        }
+        .key-points {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+        .key-points-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .key-points-icon {
+            margin-right: 10px;
+        }
+        .key-points-content {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .key-point-icon {
+            color: #fbbc04;
+            margin-right: 10px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Variables et types de données</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">data_object</i>
+                        Variables en PHP
+                    </h2>
+                    <div class="section-content">
+                        <p>• Toujours précédées du symbole <span class="highlight">$</span></p>
+                        <p>• Sensible à la casse : <span class="highlight">$nom</span> ≠ <span class="highlight">$Nom</span></p>
+                        <p>• Déclaration et initialisation en une seule étape</p>
+                        <p>• PHP est un langage à <span class="highlight">typage dynamique</span></p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">category</i>
+                        Types de base
+                    </h2>
+                    <div class="types-container">
+                        <div class="type-box">
+                            <div class="type-name">string</div>
+                            <div class="type-desc">Chaîne de caractères</div>
+                        </div>
+                        <div class="type-box">
+                            <div class="type-name">int</div>
+                            <div class="type-desc">Nombre entier</div>
+                        </div>
+                        <div class="type-box">
+                            <div class="type-name">float</div>
+                            <div class="type-desc">Nombre décimal</div>
+                        </div>
+                        <div class="type-box">
+                            <div class="type-name">bool</div>
+                            <div class="type-desc">Vrai ou faux</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-points-title">
+                        <i class="material-icons key-points-icon">tips_and_updates</i>
+                        Points importants
+                    </div>
+                    <div class="key-points-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>PHP détermine automatiquement le type de la variable</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Une variable peut changer de type pendant l'exécution</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Utilisez <span class="highlight">var_dump()</span> pour vérifier le type d'une variable</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="code-block">
+                    <h3 class="code-title">Exemples de variables et types</h3>
+                    <div class="code-container">
+                        <span class="php-tag">&lt;?php</span><br>
+                        <br>
+                        <span class="php-comment">// Déclaration de variables de différents types</span><br>
+                        <span class="php-variable">$nom</span> = <span class="php-string">"Dupont"</span>;      <span class="php-comment">// string</span><br>
+                        <span class="php-variable">$age</span> = <span class="php-number">25</span>;              <span class="php-comment">// int</span><br>
+                        <span class="php-variable">$prix</span> = <span class="php-number">19.99</span>;           <span class="php-comment">// float</span><br>
+                        <span class="php-variable">$estEtudiant</span> = <span class="php-keyword">true</span>;    <span class="php-comment">// bool</span><br>
+                        <br>
+                        <span class="php-comment">// Affichage des variables</span><br>
+                        <span class="php-keyword">echo</span> <span class="php-string">"Nom : "</span> . <span class="php-variable">$nom</span> . <span class="php-string">"&lt;br&gt;"</span>;<br>
+                        <span class="php-keyword">echo</span> <span class="php-string">"Âge : "</span> . <span class="php-variable">$age</span> . <span class="php-string">" ans&lt;br&gt;"</span>;<br>
+                        <span class="php-keyword">echo</span> <span class="php-string">"Prix : "</span> . <span class="php-variable">$prix</span> . <span class="php-string">" €&lt;br&gt;"</span>;<br>
+                        <span class="php-keyword">echo</span> <span class="php-string">"Étudiant : "</span> . <span class="php-variable">$estEtudiant</span> . <span class="php-string">"&lt;br&gt;"</span>;<br>
+                        <br>
+                        <span class="php-comment">// Changement de type (typage dynamique)</span><br>
+                        <span class="php-variable">$age</span> = <span class="php-string">"vingt-cinq"</span>;    <span class="php-comment">// maintenant un string</span><br>
+                        <br>
+                        <span class="php-comment">// Vérification du type</span><br>
+                        <span class="php-keyword">var_dump</span>(<span class="php-variable">$nom</span>);<br>
+                        <span class="php-keyword">var_dump</span>(<span class="php-variable">$age</span>);<br>
+                        <br>
+                        <span class="php-tag">?&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page5.html" class="nav-arrow nav-left">←</a>
+    <a href="page7.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

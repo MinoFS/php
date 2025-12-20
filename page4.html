@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation et environnement</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #4285F4;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #4285F4;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #4285F4;
+            font-weight: 600;
+        }
+        .diagram {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .diagram-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        .diagram-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .diagram-row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .diagram-box {
+            flex: 1;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .xampp-box {
+            background-color: #e6f4ea;
+            color: #34a853;
+            border: 2px solid #34a853;
+            margin-right: 15px;
+        }
+        .components-box {
+            background-color: #e8f0fe;
+            color: #4285F4;
+            border: 2px solid #4285F4;
+        }
+        .diagram-arrow {
+            color: #555;
+            font-size: 30px;
+            margin: 0 10px;
+        }
+        .diagram-note {
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .file-structure {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            flex-grow: 1;
+        }
+        .file-structure-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .folder-structure {
+            font-family: monospace;
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .folder {
+            color: #4285F4;
+            font-weight: 600;
+        }
+        .file {
+            color: #555;
+        }
+        .note {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        .note-title {
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 5px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        .note-icon {
+            margin-right: 8px;
+            color: #ea8600;
+        }
+        .note-content {
+            font-size: 18px;
+            color: #555;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Installation et environnement</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">dns</i>
+                        Principe serveur web
+                    </h2>
+                    <div class="section-content">
+                        <p>• <span class="highlight">Serveur web</span> : programme qui répond aux requêtes HTTP</p>
+                        <p>• <span class="highlight">Apache</span> : serveur web le plus utilisé avec PHP</p>
+                        <p>• PHP s'exécute <span class="highlight">uniquement sur le serveur</span></p>
+                        <p>• Le navigateur reçoit uniquement le résultat HTML</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">get_app</i>
+                        Installation avec XAMPP/WAMP
+                    </h2>
+                    <div class="section-content">
+                        <p>• <span class="highlight">XAMPP</span> : Cross-platform Apache MySQL PHP Perl</p>
+                        <p>• <span class="highlight">WAMP</span> : Windows Apache MySQL PHP</p>
+                        <p>• Packages tout-en-un pour développer en local</p>
+                        <p>• Installation simple en quelques clics</p>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <div class="note-title">
+                        <i class="material-icons note-icon">lightbulb</i>
+                        Conseil
+                    </div>
+                    <div class="note-content">
+                        Utilisez XAMPP si vous travaillez sur Windows, macOS ou Linux. WAMP est spécifique à Windows.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="diagram">
+                    <h3 class="diagram-title">Composition de XAMPP</h3>
+                    <div class="diagram-content">
+                        <div class="diagram-row">
+                            <div class="diagram-box xampp-box">XAMPP</div>
+                            <i class="material-icons diagram-arrow">arrow_forward</i>
+                            <div class="diagram-box components-box">Apache + MySQL + PHP + Perl</div>
+                        </div>
+                        <p class="diagram-note">Package complet pour créer un environnement de développement web local</p>
+                    </div>
+                </div>
+                
+                <div class="file-structure">
+                    <h3 class="file-structure-title">Rôle du dossier htdocs</h3>
+                    <div class="folder-structure">
+                        <div class="folder">C:/xampp/</div>
+                        <div style="padding-left: 20px;">
+                            <div class="folder">htdocs/</div>
+                            <div style="padding-left: 20px;">
+                                <div class="folder">mon-projet/</div>
+                                <div style="padding-left: 20px;">
+                                    <div class="file">index.php</div>
+                                    <div class="file">style.css</div>
+                                    <div class="file">traitement.php</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-content" style="margin-top: 20px; padding-left: 0;">
+                        <p>• <span class="highlight">htdocs</span> : dossier racine du serveur web</p>
+                        <p>• Placez vos fichiers PHP dans ce dossier</p>
+                        <p>• Accédez via : <span class="highlight">http://localhost/mon-projet/</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page3.html" class="nav-arrow nav-left">←</a>
+    <a href="page5.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

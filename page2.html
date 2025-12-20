@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de la présentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow-y: auto;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #4285F4;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-column, .right-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .left-column {
+            padding-right: 30px;
+        }
+        .right-column {
+            padding-left: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .section-icon {
+            color: #4285F4;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            flex: 1;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .section-desc {
+            font-size: 18px;
+            color: #666;
+        }
+        .highlight {
+            color: #4285F4;
+            font-weight: 600;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Plan de la présentation</h1>
+        </div>
+        <div class="content">
+            <div class="left-column">
+                <div class="section">
+                    <i class="material-icons section-icon">info</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Introduction à PHP</h2>
+                        <p class="section-desc">Qu'est-ce que PHP et à quoi ça sert ?</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">computer</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Installation et environnement</h2>
+                        <p class="section-desc">XAMPP/WAMP et principe serveur web</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">code</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Premier script PHP</h2>
+                        <p class="section-desc">Balises, echo et exemple "Hello World"</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">data_object</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Variables et types de données</h2>
+                        <p class="section-desc">Déclaration et utilisation des variables</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">calculate</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Opérations et concaténation</h2>
+                        <p class="section-desc">Opérateurs arithmétiques et concaténation</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">call_split</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Conditions</h2>
+                        <p class="section-desc">if, else et vérification de variables</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="section">
+                    <i class="material-icons section-icon">loop</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Boucles</h2>
+                        <p class="section-desc">for et while avec exemples simples</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">view_list</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Tableaux</h2>
+                        <p class="section-desc">Création et manipulation de tableaux</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">integration_instructions</i>
+                    <div class="section-content">
+                        <h2 class="section-title">PHP et HTML ensemble</h2>
+                        <p class="section-desc">Intégration et affichage de variables</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">description</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Formulaires HTML et PHP</h2>
+                        <p class="section-desc">Méthode POST et récupération des données</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">verified</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Bonnes pratiques</h2>
+                        <p class="section-desc">Indentation, nommage et séparation logique</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">warning</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Erreurs courantes</h2>
+                        <p class="section-desc">Pièges à éviter pour les débutants</p>
+                    </div>
+                </div>
+                <div class="section">
+                    <i class="material-icons section-icon">arrow_forward</i>
+                    <div class="section-content">
+                        <h2 class="section-title">Transition vers MySQL</h2>
+                        <p class="section-desc">Prochaine étape : bases de données</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="index.html" class="nav-arrow nav-left">←</a>
+    <a href="page3.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

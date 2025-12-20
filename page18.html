@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ressources complémentaires</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #4285F4;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+        .resource-card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4285F4;
+        }
+        .resource-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .resource-icon {
+            color: #4285F4;
+            font-size: 32px;
+            margin-right: 15px;
+        }
+        .resource-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+        .resource-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-grow: 1;
+        }
+        .resource-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        .resource-item-icon {
+            color: #4285F4;
+            margin-right: 12px;
+            font-size: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .resource-item-content {
+            flex-grow: 1;
+        }
+        .resource-item-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .resource-item-desc {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.4;
+        }
+        .highlight {
+            color: #4285F4;
+            font-weight: 600;
+        }
+        .resource-link {
+            color: #4285F4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background-color: #e8f0fe;
+            padding: 20px 70px;
+            color: #333;
+            font-size: 22px;
+            font-weight: 600;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-icon {
+            color: #4285F4;
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Ressources complémentaires</h1>
+        </div>
+        <div class="content">
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <i class="material-icons resource-icon">menu_book</i>
+                        <h2 class="resource-title">Documentation</h2>
+                    </div>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">language</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">PHP.net</div>
+                                <div class="resource-item-desc">Documentation officielle complète avec exemples</div>
+                                <a href="https://www.php.net/docs.php" class="resource-link">php.net/docs.php</a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">school</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">W3Schools PHP</div>
+                                <div class="resource-item-desc">Tutoriels interactifs pour débutants</div>
+                                <a href="https://www.w3schools.com/php/" class="resource-link">w3schools.com/php</a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">code</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">PHP The Right Way</div>
+                                <div class="resource-item-desc">Guide des bonnes pratiques en PHP</div>
+                                <a href="https://www.phptherightway.com/" class="resource-link">phptherightway.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <i class="material-icons resource-icon">video_library</i>
+                        <h2 class="resource-title">Tutoriels vidéo</h2>
+                    </div>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">play_circle</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">Grafikart</div>
+                                <div class="resource-item-desc">Cours PHP complet en français</div>
+                                <a href="https://grafikart.fr/formations/php" class="resource-link">grafikart.fr/formations/php</a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">play_circle</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">PHP Academy</div>
+                                <div class="resource-item-desc">Chaîne YouTube avec tutoriels PHP</div>
+                                <a href="https://www.youtube.com/user/phpacademy" class="resource-link">youtube.com/user/phpacademy</a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">play_circle</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">OpenClassrooms</div>
+                                <div class="resource-item-desc">Formation PHP pour débutants</div>
+                                <a href="https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql" class="resource-link">openclassrooms.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <i class="material-icons resource-icon">fitness_center</i>
+                        <h2 class="resource-title">Exercices pratiques</h2>
+                    </div>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">code</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">Codewars PHP</div>
+                                <div class="resource-item-desc">Défis de code pour s'entraîner</div>
+                                <a href="https://www.codewars.com/?language=php" class="resource-link">codewars.com</a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">code</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">Exercices PHP</div>
+                                <div class="resource-item-desc">Exercices corrigés pour débutants</div>
+                                <a href="https://www.phpexercises.com/" class="resource-link">phpexercises.com</a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">code</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">HackerRank</div>
+                                <div class="resource-item-desc">Problèmes de programmation en PHP</div>
+                                <a href="https://www.hackerrank.com/domains/php" class="resource-link">hackerrank.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <i class="material-icons resource-icon">build</i>
+                        <h2 class="resource-title">Outils et environnement</h2>
+                    </div>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">desktop_windows</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">XAMPP</div>
+                                <div class="resource-item-desc">Environnement de développement local</div>
+                                <a href="https://www.apachefriends.org/" class="resource-link">apachefriends.org</a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">code</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">Visual Studio Code</div>
+                                <div class="resource-item-desc">Éditeur de code avec extensions PHP</div>
+                                <a href="https://code.visualstudio.com/" class="resource-link">code.visualstudio.com</a>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class="material-icons resource-item-icon">bug_report</i>
+                            <div class="resource-item-content">
+                                <div class="resource-item-title">PHP Debug</div>
+                                <div class="resource-item-desc">Extension VS Code pour déboguer</div>
+                                <a href="https://marketplace.visualstudio.com/items?itemName=xdebug.php-debug" class="resource-link">marketplace.visualstudio.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <i class="material-icons footer-icon">lightbulb</i>
+            Pratiquez régulièrement pour maîtriser les concepts
+        </div>
+    </div>
+    <a href="page17.html" class="nav-arrow nav-left">←</a>
+    <a href="page19.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résumé</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #4285F4;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            flex-grow: 1;
+        }
+        .summary-item {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4285F4;
+        }
+        .summary-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .summary-icon {
+            color: #4285F4;
+            font-size: 32px;
+            margin-right: 15px;
+        }
+        .summary-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+        .summary-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .key-point-icon {
+            color: #4285F4;
+            margin-right: 10px;
+            font-size: 20px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .highlight {
+            color: #4285F4;
+            font-weight: 600;
+        }
+        .footer {
+            background-color: #e8f0fe;
+            padding: 20px 70px;
+            color: #333;
+            font-size: 22px;
+            font-weight: 600;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-icon {
+            color: #4285F4;
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Résumé</h1>
+        </div>
+        <div class="content">
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-header">
+                        <i class="material-icons summary-icon">code</i>
+                        <h2 class="summary-title">Bases de PHP</h2>
+                    </div>
+                    <div class="summary-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Code entre <span class="highlight">&lt;?php ?&gt;</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Variables avec <span class="highlight">$</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Types : string, int, float, bool</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Concaténation avec <span class="highlight">.</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-header">
+                        <i class="material-icons summary-icon">call_split</i>
+                        <h2 class="summary-title">Structures de contrôle</h2>
+                    </div>
+                    <div class="summary-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Conditions : <span class="highlight">if/else</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Boucles : <span class="highlight">for/while/foreach</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Opérateurs : <span class="highlight">==, !=, &lt;, &gt;</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Vérification : <span class="highlight">isset(), empty()</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-header">
+                        <i class="material-icons summary-icon">view_list</i>
+                        <h2 class="summary-title">Tableaux</h2>
+                    </div>
+                    <div class="summary-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Stockage de <span class="highlight">multiples valeurs</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Accès par <span class="highlight">index</span> ou <span class="highlight">clé</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Parcours avec <span class="highlight">foreach</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Tableaux indexés ou associatifs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-header">
+                        <i class="material-icons summary-icon">integration_instructions</i>
+                        <h2 class="summary-title">PHP et HTML</h2>
+                    </div>
+                    <div class="summary-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>PHP s'exécute sur le <span class="highlight">serveur</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Intégration dans du HTML</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Affichage avec <span class="highlight">echo</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Raccourci : <span class="highlight">&lt;?= $variable ?&gt;</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-header">
+                        <i class="material-icons summary-icon">description</i>
+                        <h2 class="summary-title">Formulaires</h2>
+                    </div>
+                    <div class="summary-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Méthode <span class="highlight">POST</span> pour les données</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Récupération avec <span class="highlight">$_POST</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Vérification des champs obligatoires</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Affichage des données soumises</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-item">
+                    <div class="summary-header">
+                        <i class="material-icons summary-icon">tips_and_updates</i>
+                        <h2 class="summary-title">Bonnes pratiques</h2>
+                    </div>
+                    <div class="summary-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span><span class="highlight">Indentation</span> cohérente</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Noms de variables <span class="highlight">descriptifs</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Séparer <span class="highlight">logique</span> et <span class="highlight">affichage</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Éviter les erreurs courantes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <i class="material-icons footer-icon">arrow_forward</i>
+            Prochaine étape : Connexion PHP et MySQL
+        </div>
+    </div>
+    <a href="page16.html" class="nav-arrow nav-left">←</a>
+    <a href="page18.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #4285F4;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #4285F4;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #4285F4;
+            font-weight: 600;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .code-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .code-container {
+            background-color: #2d2d2d;
+            border-radius: 6px;
+            padding: 20px;
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 1.5;
+            overflow: auto;
+            flex-grow: 1;
+        }
+        .php-tag {
+            color: #f92672;
+        }
+        .php-keyword {
+            color: #66d9ef;
+        }
+        .php-string {
+            color: #a6e22e;
+        }
+        .php-comment {
+            color: #75715e;
+            font-style: italic;
+        }
+        .php-number {
+            color: #ae81ff;
+        }
+        .php-variable {
+            color: #fd971f;
+        }
+        .php-operator {
+            color: #f92672;
+        }
+        .operators-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .operator-box {
+            background-color: #e8f0fe;
+            border: 2px solid #4285F4;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .operator-symbol {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4285F4;
+            margin-bottom: 8px;
+        }
+        .operator-name {
+            font-size: 18px;
+            color: #555;
+        }
+        .example-box {
+            background-color: #e6f4ea;
+            border: 2px solid #34a853;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .example-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #34a853;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .example-icon {
+            margin-right: 10px;
+        }
+        .example-content {
+            font-size: 18px;
+            color: #333;
+        }
+        .tip-box {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+        .tip-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .tip-icon {
+            margin-right: 10px;
+        }
+        .tip-content {
+            font-size: 18px;
+            color: #555;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Conditions</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">call_split</i>
+                        Instructions if/else
+                    </h2>
+                    <div class="section-content">
+                        <p>• Permettent d'exécuter du code selon une condition</p>
+                        <p>• Structure de base : <span class="highlight">if (condition) { ... }</span></p>
+                        <p>• Peut inclure <span class="highlight">else</span> et <span class="highlight">elseif</span></p>
+                    </div>
+                    
+                    <div class="operators-grid">
+                        <div class="operator-box">
+                            <div class="operator-symbol">==</div>
+                            <div class="operator-name">Égalité</div>
+                        </div>
+                        <div class="operator-box">
+                            <div class="operator-symbol">!=</div>
+                            <div class="operator-name">Différence</div>
+                        </div>
+                        <div class="operator-box">
+                            <div class="operator-symbol">&lt; &gt;</div>
+                            <div class="operator-name">Comparaison</div>
+                        </div>
+                        <div class="operator-box">
+                            <div class="operator-symbol">&amp;&amp; ||</div>
+                            <div class="operator-name">Logique</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">check_circle</i>
+                        Vérifier si une variable est vide
+                    </h2>
+                    <div class="section-content">
+                        <p>• <span class="highlight">empty()</span> : vérifie si une variable est vide</p>
+                        <p>• Retourne <span class="highlight">true</span> si : "", 0, "0", null, false, array()</p>
+                        <p>• <span class="highlight">isset()</span> : vérifie si une variable existe</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">
+                            <i class="material-icons example-icon">lightbulb</i>
+                            Utilisation avec un formulaire
+                        </div>
+                        <div class="example-content">
+                            <p>Vérifier si un champ a été rempli avant de traiter les données</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">
+                        <i class="material-icons tip-icon">tips_and_updates</i>
+                        Bonne pratique
+                    </div>
+                    <div class="tip-content">
+                        <p>Toujours vérifier si les variables d'un formulaire existent avec <span class="highlight">isset()</span> avant de les utiliser</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="code-block">
+                    <h3 class="code-title">Exemple de conditions</h3>
+                    <div class="code-container">
+                        <span class="php-tag">&lt;?php</span><br>
+                        <br>
+                        <span class="php-comment">// Vérification de l'âge</span><br>
+                        <span class="php-variable">$age</span> = <span class="php-number">20</span>;<br>
+                        <br>
+                        <span class="php-keyword">if</span> (<span class="php-variable">$age</span> <span class="php-operator">&gt;=</span> <span class="php-number">18</span>) {<br>
+                        &nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"Vous êtes majeur.&lt;br&gt;"</span>;<br>
+                        } <span class="php-keyword">else</span> {<br>
+                        &nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"Vous êtes mineur.&lt;br&gt;"</span>;<br>
+                        }<br>
+                        <br>
+                        <span class="php-comment">// Vérification avec elseif</span><br>
+                        <span class="php-variable">$note</span> = <span class="php-number">15</span>;<br>
+                        <br>
+                        <span class="php-keyword">if</span> (<span class="php-variable">$note</span> <span class="php-operator">&gt;=</span> <span class="php-number">16</span>) {<br>
+                        &nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"Très bien&lt;br&gt;"</span>;<br>
+                        } <span class="php-keyword">elseif</span> (<span class="php-variable">$note</span> <span class="php-operator">&gt;=</span> <span class="php-number">14</span>) {<br>
+                        &nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"Bien&lt;br&gt;"</span>;<br>
+                        } <span class="php-keyword">elseif</span> (<span class="php-variable">$note</span> <span class="php-operator">&gt;=</span> <span class="php-number">12</span>) {<br>
+                        &nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"Assez bien&lt;br&gt;"</span>;<br>
+                        } <span class="php-keyword">else</span> {<br>
+                        &nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"À améliorer&lt;br&gt;"</span>;<br>
+                        }<br>
+                        <br>
+                        <span class="php-comment">// Vérification si une variable est vide</span><br>
+                        <span class="php-variable">$nom</span> = <span class="php-string">""</span>;<br>
+                        <br>
+                        <span class="php-keyword">if</span> (<span class="php-keyword">empty</span>(<span class="php-variable">$nom</span>)) {<br>
+                        &nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"Le nom est vide.&lt;br&gt;"</span>;<br>
+                        } <span class="php-keyword">else</span> {<br>
+                        &nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"Bonjour "</span> <span class="php-operator">.</span> <span class="php-variable">$nom</span> <span class="php-operator">.</span> <span class="php-string">"!&lt;br&gt;"</span>;<br>
+                        }<br>
+                        <br>
+                        <span class="php-comment">// Exemple avec un formulaire</span><br>
+                        <span class="php-keyword">if</span> (<span class="php-keyword">isset</span>(<span class="php-variable">$_POST</span>[<span class="php-string">'submit'</span>])) {<br>
+                        &nbsp;&nbsp;<span class="php-variable">$message</span> = <span class="php-variable">$_POST</span>[<span class="php-string">'message'</span>];<br>
+                        &nbsp;&nbsp;<br>
+                        &nbsp;&nbsp;<span class="php-keyword">if</span> (<span class="php-keyword">empty</span>(<span class="php-variable">$message</span>)) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"Veuillez saisir un message.&lt;br&gt;"</span>;<br>
+                        &nbsp;&nbsp;} <span class="php-keyword">else</span> {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"Message reçu : "</span> <span class="php-operator">.</span> <span class="php-variable">$message</span> <span class="php-operator">.</span> <span class="php-string">"&lt;br&gt;"</span>;<br>
+                        &nbsp;&nbsp;}<br>
+                        }<br>
+                        <br>
+                        <span class="php-tag">?&gt;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page7.html" class="nav-arrow nav-left">←</a>
+    <a href="page9.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

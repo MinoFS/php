@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions et réponses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #4285F4;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .qa-container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .qa-icon {
+            font-size: 80px;
+            color: #4285F4;
+            margin-bottom: 30px;
+        }
+        .qa-title {
+            font-size: 36px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .qa-subtitle {
+            font-size: 24px;
+            color: #555;
+            max-width: 800px;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+        .qa-topics {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .topic-card {
+            background-color: #e8f0fe;
+            border: 2px solid #4285F4;
+            border-radius: 12px;
+            padding: 20px;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .topic-icon {
+            font-size: 36px;
+            color: #4285F4;
+            margin-bottom: 15px;
+        }
+        .topic-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+        .footer {
+            background-color: #e8f0fe;
+            padding: 20px 70px;
+            color: #333;
+            font-size: 22px;
+            font-weight: 600;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-icon {
+            color: #4285F4;
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Questions et réponses</h1>
+        </div>
+        <div class="content">
+            <div class="qa-container">
+                <i class="material-icons qa-icon">question_answer</i>
+                <h2 class="qa-title">Des questions ?</h2>
+                <p class="qa-subtitle">C'est le moment de poser vos questions sur les concepts que nous avons vus aujourd'hui</p>
+                
+                <div class="qa-topics">
+                    <div class="topic-card">
+                        <i class="material-icons topic-icon">code</i>
+                        <h3 class="topic-title">Syntaxe PHP</h3>
+                    </div>
+                    <div class="topic-card">
+                        <i class="material-icons topic-icon">integration_instructions</i>
+                        <h3 class="topic-title">PHP et HTML</h3>
+                    </div>
+                    <div class="topic-card">
+                        <i class="material-icons topic-icon">description</i>
+                        <h3 class="topic-title">Formulaires</h3>
+                    </div>
+                    <div class="topic-card">
+                        <i class="material-icons topic-icon">psychology</i>
+                        <h3 class="topic-title">Prochain cours MySQL</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <i class="material-icons footer-icon">school</i>
+            N'hésitez pas à expérimenter avec le code entre les cours
+        </div>
+    </div>
+    <a href="page18.html" class="nav-arrow nav-left">←</a>
+    <a href="page20.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remerciement et contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #4285F4;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .thank-you-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .thank-you-icon {
+            font-size: 80px;
+            color: #4285F4;
+            margin-bottom: 30px;
+        }
+        .thank-you-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .thank-you-message {
+            font-size: 24px;
+            color: #555;
+            max-width: 800px;
+            line-height: 1.5;
+            margin-bottom: 50px;
+        }
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .contact-card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-left: 4px solid #4285F4;
+        }
+        .contact-icon {
+            font-size: 36px;
+            color: #4285F4;
+            margin-bottom: 15px;
+        }
+        .contact-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .contact-info {
+            font-size: 20px;
+            color: #555;
+            text-align: center;
+        }
+        .highlight {
+            color: #4285F4;
+            font-weight: 600;
+        }
+        .footer {
+            background-color: #e8f0fe;
+            padding: 20px 70px;
+            color: #333;
+            font-size: 22px;
+            font-weight: 600;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-icon {
+            color: #4285F4;
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Remerciement et contact</h1>
+        </div>
+        <div class="content">
+            <div class="thank-you-container">
+                <i class="material-icons thank-you-icon">emoji_events</i>
+                <h2 class="thank-you-title">Merci pour votre attention !</h2>
+                <p class="thank-you-message">J'espère que cette introduction à PHP vous a été utile. N'hésitez pas à pratiquer et à expérimenter avec les concepts que nous avons vus aujourd'hui.</p>
+                
+                <div class="contact-container">
+                    <div class="contact-card">
+                        <i class="material-icons contact-icon">schedule</i>
+                        <h3 class="contact-title">Prochain cours</h3>
+                        <p class="contact-info">MySQL</p>
+                        <p class="contact-info">Samedi prochain</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="material-icons contact-icon">school</i>
+                        <h3 class="contact-title">Ressources</h3>
+                        <p class="contact-info">Plateforme OpenClassrooms</p>
+                        <p class="contact-info">Code disponible sur GitHub</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <i class="material-icons footer-icon">auto_awesome</i>
+            Continuez à apprendre et à créer !
+        </div>
+    </div>
+    <a href="page19.html" class="nav-arrow nav-left">←</a>
+</body>
+</html>
