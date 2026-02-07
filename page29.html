@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL — bases indispensables : INSERT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #0051C8;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #0051C8;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #0051C8;
+            font-weight: 600;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .code-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .code-container {
+            background-color: #2d2d2d;
+            border-radius: 6px;
+            padding: 20px;
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 1.5;
+            overflow: auto;
+            flex-grow: 1;
+        }
+        .sql-keyword {
+            color: #66d9ef;
+        }
+        .sql-string {
+            color: #a6e22e;
+        }
+        .sql-comment {
+            color: #75715e;
+            font-style: italic;
+        }
+        .sql-number {
+            color: #ae81ff;
+        }
+        .sql-operator {
+            color: #f92672;
+        }
+        .example-box {
+            background-color: #e8f0fe;
+            border: 2px solid #0051C8;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .example-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #0051C8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .example-icon {
+            margin-right: 10px;
+        }
+        .example-content {
+            font-size: 20px;
+            color: #333;
+        }
+        .key-points {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+        .key-points-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .key-points-icon {
+            margin-right: 10px;
+        }
+        .key-points-content {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .key-point-icon {
+            color: #fbbc04;
+            margin-right: 10px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        .result-box {
+            background-color: #e6f4ea;
+            border: 2px solid #34a853;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .result-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #34a853;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .result-icon {
+            margin-right: 8px;
+        }
+        .result-content {
+            font-size: 16px;
+            color: #333;
+            font-family: 'Courier New', monospace;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">SQL — bases indispensables : INSERT</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">add_circle</i>
+                        Commande INSERT
+                    </h2>
+                    <div class="section-content">
+                        <p>• Permet d'<span class="highlight">ajouter</span> des données dans une table</p>
+                        <p>• Structure de base : <span class="highlight">INSERT INTO table VALUES (...)</span></p>
+                        <p>• Essentielle pour stocker de nouvelles informations</p>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h3 class="example-title">
+                        <i class="material-icons example-icon">code</i>
+                        Exemples de INSERT
+                    </h3>
+                    <div class="example-content">
+                        <p><span class="highlight">INSERT INTO</span> messages <span class="highlight">VALUES</span> (0, 'Alice', 'Bonjour !', NOW());</p>
+                        <p style="margin-left: 20px;">Ajoute un nouveau message avec <span class="highlight">toutes les valeurs</span></p>
+                        
+                        <p style="margin-top: 15px;"><span class="highlight">INSERT INTO</span> messages (auteur, message) <span class="highlight">VALUES</span> ('Bob', 'Merci !');</p>
+                        <p style="margin-left: 20px;">Ajoute un message en spécifiant <span class="highlight">certaines colonnes</span></p>
+                        
+                        <p style="margin-top: 15px;"><span class="highlight">INSERT INTO</span> utilisateurs (nom, email, age) <span class="highlight">VALUES</span> ('Charlie', 'charlie@email.com', 25);</p>
+                        <p style="margin-left: 20px;">Ajoute un nouvel <span class="highlight">utilisateur</span> dans la table</p>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-points-title">
+                        <i class="material-icons key-points-icon">lightbulb</i>
+                        Points clés
+                    </div>
+                    <div class="key-points-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>L'ordre des valeurs doit correspondre à l'ordre des colonnes</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Les chaînes de caractères doivent être entre <span class="highlight">'guillemets simples'</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span><span class="highlight">NOW()</span> insère la date et heure actuelles</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="code-block">
+                    <h3 class="code-title">Exemple complet avec INSERT</h3>
+                    <div class="code-container">
+                        <span class="sql-comment">-- Insérer un message complet</span><br>
+                        <span class="sql-keyword">INSERT INTO</span> messages <span class="sql-keyword">VALUES</span> (<br>
+                        <span class="sql-operator">NULL</span>, <span class="sql-comment">-- ID (auto-incrémenté)</span><br>
+                        <span class="sql-string">'Alice'</span>, <span class="sql-comment">-- Auteur</span><br>
+                        <span class="sql-string">'Bonjour à tous !'</span>, <span class="sql-comment">-- Message</span><br>
+                        <span class="sql-keyword">NOW</span>() <span class="sql-comment">-- Date actuelle</span><br>
+                        );<br>
+                        <br>
+                        <span class="sql-comment">-- Insérer en spécifiant les colonnes</span><br>
+                        <span class="sql-keyword">INSERT INTO</span> messages (auteur, message) <span class="sql-keyword">VALUES</span> (<br>
+                        <span class="sql-string">'Bob'</span>, <br>
+                        <span class="sql-string">'Merci pour l\\'information'</span><br>
+                        );<br>
+                        <br>
+                        <span class="sql-comment">-- Insérer plusieurs messages en une fois</span><br>
+                        <span class="sql-keyword">INSERT INTO</span> messages (auteur, message) <span class="sql-keyword">VALUES</span> <br>
+                        (<span class="sql-string">'Charlie'</span>, <span class="sql-string">'Super cours !'</span>),<br>
+                        (<span class="sql-string">'David'</span>, <span class="sql-string">'J\\'apprends beaucoup'</span>),<br>
+                        (<span class="sql-string">'Eve'</span>, <span class="sql-string">'Très intéressant'</span>);<br>
+                        <br>
+                        <span class="sql-comment">-- Insérer un utilisateur</span><br>
+                        <span class="sql-keyword">INSERT INTO</span> utilisateurs (nom, email, age) <span class="sql-keyword">VALUES</span> (<br>
+                        <span class="sql-string">'Alice Dupont'</span>, <br>
+                        <span class="sql-string">'alice@email.com'</span>, <br>
+                        <span class="sql-number">22</span><br>
+                        );
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="result-title">
+                            <i class="material-icons result-icon">check_circle</i>
+                            Résultat
+                        </div>
+                        <div class="result-content">
+                            <div style="display: flex; gap: 15px; margin-bottom: 5px;">
+                                <div style="font-weight: 600;">id</div>
+                                <div style="font-weight: 600;">auteur</div>
+                                <div style="font-weight: 600;">message</div>
+                                <div style="font-weight: 600;">date_creation</div>
+                            </div>
+                            <div style="display: flex; gap: 15px; margin-bottom: 5px;">
+                                <div>1</div>
+                                <div>Alice</div>
+                                <div>Bonjour à tous !</div>
+                                <div>2023-10-15 14:30:22</div>
+                            </div>
+                            <div style="display: flex; gap: 15px; margin-bottom: 5px;">
+                                <div>2</div>
+                                <div>Bob</div>
+                                <div>Merci pour l'information</div>
+                                <div>2023-10-15 14:32:15</div>
+                            </div>
+                            <div style="display: flex; gap: 15px;">
+                                <div>3</div>
+                                <div>Charlie</div>
+                                <div>Super cours !</div>
+                                <div>2023-10-15 14:35:08</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page28.html" class="nav-arrow nav-left">←</a>
+    <a href="page30.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

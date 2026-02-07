@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découverte de phpMyAdmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #0051C8;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #0051C8;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #0051C8;
+            font-weight: 600;
+        }
+        .tool-card {
+            background-color: #e8f0fe;
+            border: 2px solid #0051C8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .tool-icon {
+            color: #0051C8;
+            font-size: 32px;
+            margin-right: 15px;
+        }
+        .tool-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+        .tool-content {
+            font-size: 20px;
+            color: #333;
+            line-height: 1.5;
+        }
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .step-number {
+            background-color: #0051C8;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .step-content {
+            flex: 1;
+        }
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .step-desc {
+            font-size: 18px;
+            color: #555;
+        }
+        .interface-preview {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .preview-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .preview-icon {
+            color: #0051C8;
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .preview-image {
+            flex-grow: 1;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .preview-header {
+            background-color: #0051C8;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .preview-header-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .preview-body {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .preview-section {
+            background-color: #f1f3f4;
+            border-radius: 6px;
+            padding: 10px;
+        }
+        .preview-section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .preview-section-content {
+            font-size: 14px;
+            color: #555;
+        }
+        .key-points {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+        .key-points-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .key-points-icon {
+            margin-right: 10px;
+        }
+        .key-points-content {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .key-point-icon {
+            color: #fbbc04;
+            margin-right: 10px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Découverte de phpMyAdmin</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <i class="material-icons tool-icon">build</i>
+                        <h3 class="tool-title">Qu'est-ce que phpMyAdmin ?</h3>
+                    </div>
+                    <div class="tool-content">
+                        <p>• Interface <span class="highlight">web</span> pour gérer MySQL</p>
+                        <p>• Permet de créer, modifier et supprimer des bases de données</p>
+                        <p>• Inclu dans <span class="highlight">XAMPP</span> et <span class="highlight">WAMP</span></p>
+                        <p>• Alternative à la ligne de commande</p>
+                    </div>
+                </div>
+                
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Créer une base de données</h4>
+                            <p class="step-desc">Onglet "Bases de données" → Nom de la base → "Créer"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Créer une table</h4>
+                            <p class="step-desc">Sélectionner la base → Nom de la table → Nombre de colonnes → "Exécuter"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Définir les colonnes</h4>
+                            <p class="step-desc">Nom, Type, Taille, etc. → "Sauvegarder"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Insérer des données</h4>
+                            <p class="step-desc">Onglet "Insérer" → Remplir les champs → "Exécuter"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-points-title">
+                        <i class="material-icons key-points-icon">lightbulb</i>
+                        Conseils
+                    </div>
+                    <div class="key-points-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Utilisez des noms <span class="highlight">descriptifs</span> pour vos bases et tables</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Choisissez des <span class="highlight">types de données appropriés</span> pour chaque colonne</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="interface-preview">
+                    <h3 class="preview-title">
+                        <i class="material-icons preview-icon">desktop_windows</i>
+                        Interface phpMyAdmin
+                    </h3>
+                    <div class="preview-image">
+                        <div class="preview-header">
+                            <div class="preview-header-title">phpMyAdmin</div>
+                            <div style="display: flex; gap: 10px;">
+                                <i class="material-icons" style="font-size: 18px;">home</i>
+                                <i class="material-icons" style="font-size: 18px;">settings</i>
+                                <i class="material-icons" style="font-size: 18px;">logout</i>
+                            </div>
+                        </div>
+                        <div class="preview-body">
+                            <div class="preview-section">
+                                <div class="preview-section-title">Bases de données</div>
+                                <div class="preview-section-content">
+                                    <div>• blog</div>
+                                    <div>• test</div>
+                                    <div>• information_schema</div>
+                                </div>
+                            </div>
+                            
+                            <div class="preview-section">
+                                <div class="preview-section-title">Table: messages</div>
+                                <div class="preview-section-content">
+                                    <div style="display: flex; gap: 10px; margin-bottom: 5px;">
+                                        <div style="font-weight: 600;">ID</div>
+                                        <div style="font-weight: 600;">Auteur</div>
+                                        <div style="font-weight: 600;">Message</div>
+                                        <div style="font-weight: 600;">Date</div>
+                                    </div>
+                                    <div style="display: flex; gap: 10px; margin-bottom: 5px;">
+                                        <div>1</div>
+                                        <div>Alice</div>
+                                        <div>Bonjour à tous !</div>
+                                        <div>2023-10-15</div>
+                                    </div>
+                                    <div style="display: flex; gap: 10px;">
+                                        <div>2</div>
+                                        <div>Bob</div>
+                                        <div>Merci pour l'info</div>
+                                        <div>2023-10-16</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="preview-section">
+                                <div class="preview-section-title">Actions</div>
+                                <div class="preview-section-content">
+                                    <div style="display: flex; gap: 10px;">
+                                        <div style="background-color: #e8f0fe; color: #0051C8; padding: 5px 10px; border-radius: 4px; font-size: 14px;">Afficher</div>
+                                        <div style="background-color: #e8f0fe; color: #0051C8; padding: 5px 10px; border-radius: 4px; font-size: 14px;">Insérer</div>
+                                        <div style="background-color: #e8f0fe; color: #0051C8; padding: 5px 10px; border-radius: 4px; font-size: 14px;">Structure</div>
+                                        <div style="background-color: #e8f0fe; color: #0051C8; padding: 5px 10px; border-radius: 4px; font-size: 14px;">SQL</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section" style="margin-top: 30px;">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">code</i>
+                        Exécution de requêtes SQL
+                    </h2>
+                    <div class="section-content">
+                        <p>• Onglet <span class="highlight">"SQL"</span> pour écrire directement des requêtes</p>
+                        <p>• Testez vos requêtes avant de les utiliser dans PHP</p>
+                        <p>• Vérifiez les résultats directement dans l'interface</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page26.html" class="nav-arrow nav-left">←</a>
+    <a href="page28.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

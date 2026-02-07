@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu'est-ce que MySQL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #0051C8;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #0051C8;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #0051C8;
+            font-weight: 600;
+        }
+        .definition-box {
+            background-color: #e8f0fe;
+            border: 2px solid #0051C8;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .definition-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #0051C8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .definition-icon {
+            margin-right: 10px;
+        }
+        .definition-content {
+            font-size: 20px;
+            color: #333;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .feature-item {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .feature-icon {
+            color: #0051C8;
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .feature-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .architecture-diagram {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .diagram-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .diagram-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .diagram-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .diagram-box {
+            width: 180px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+        }
+        .browser-box {
+            background-color: #e8f0fe;
+            color: #0051C8;
+            border: 2px solid #0051C8;
+        }
+        .php-box {
+            background-color: #fef7e0;
+            color: #ea8600;
+            border: 2px solid #ea8600;
+        }
+        .mysql-box {
+            background-color: #e6f4ea;
+            color: #34a853;
+            border: 2px solid #34a853;
+        }
+        .diagram-arrow {
+            color: #555;
+            font-size: 30px;
+            margin: 0 15px;
+        }
+        .key-points {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: auto;
+        }
+        .key-points-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .key-points-icon {
+            margin-right: 10px;
+        }
+        .key-points-content {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .key-point-icon {
+            color: #fbbc04;
+            margin-right: 10px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Qu'est-ce que MySQL</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="definition-box">
+                    <h3 class="definition-title">
+                        <i class="material-icons definition-icon">info</i>
+                        Définition
+                    </h3>
+                    <div class="definition-content">
+                        <p><span class="highlight">MySQL</span> : Système de Gestion de Bases de Données (SGBD)</p>
+                        <p>Logiciel qui <span class="highlight">organise</span>, <span class="highlight">stocke</span> et <span class="highlight">gère</span> les données</p>
+                        <p>Créé en 1995, acquis par Oracle en 2010</p>
+                        <p>Open source et gratuit dans sa version communautaire</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">storage</i>
+                        Qu'est-ce qu'un SGBD ?
+                    </h2>
+                    <div class="section-content">
+                        <p>• <span class="highlight">S</span>ystème de <span class="highlight">G</span>estion de <span class="highlight">B</span>ases de <span class="highlight">D</span>onnées</p>
+                        <p>• Interface entre les utilisateurs et la base de données</p>
+                        <p>• Gère le stockage, la sécurité et l'accès aux données</p>
+                    </div>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="material-icons feature-icon">speed</i>
+                        <div class="feature-text">Rapide et performant</div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="material-icons feature-icon">public</i>
+                        <div class="feature-text">Multiplateforme</div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="material-icons feature-icon">security</i>
+                        <div class="feature-text">Sécurité intégrée</div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="material-icons feature-icon">groups</i>
+                        <div class="feature-text">Accès multi-utilisateurs</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">language</i>
+                        Rôle dans un site web
+                    </h2>
+                    <div class="section-content">
+                        <p>• Stockage <span class="highlight">permanent</span> des données</p>
+                        <p>• Gestion des <span class="highlight">utilisateurs</span>, <span class="highlight">articles</span>, <span class="highlight">commandes</span>...</p>
+                        <p>• <span class="highlight">Backend</span> de l'application web</p>
+                    </div>
+                </div>
+                
+                <div class="architecture-diagram">
+                    <h3 class="diagram-title">Architecture d'une application web</h3>
+                    <div class="diagram-content">
+                        <div class="diagram-row">
+                            <div class="diagram-box browser-box">Navigateur</div>
+                            <i class="material-icons diagram-arrow">arrow_forward</i>
+                            <div class="diagram-box php-box">PHP</div>
+                            <i class="material-icons diagram-arrow">arrow_forward</i>
+                            <div class="diagram-box mysql-box">MySQL</div>
+                        </div>
+                        
+                        <div class="diagram-row">
+                            <div class="diagram-box browser-box">Client</div>
+                            <i class="material-icons diagram-arrow">arrow_back</i>
+                            <div class="diagram-box php-box">Traitement</div>
+                            <i class="material-icons diagram-arrow">arrow_back</i>
+                            <div class="diagram-box mysql-box">Données</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-points-title">
+                        <i class="material-icons key-points-icon">lightbulb</i>
+                        Points clés
+                    </div>
+                    <div class="key-points-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>MySQL communique avec PHP via le langage <span class="highlight">SQL</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>PHP agit comme <span class="highlight">intermédiaire</span> entre le navigateur et MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page23.html" class="nav-arrow nav-left">←</a>
+    <a href="page25.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

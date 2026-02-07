@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet final complet - partie 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #0051C8;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #0051C8;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #0051C8;
+            font-weight: 600;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .code-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .code-container {
+            background-color: #2d2d2d;
+            border-radius: 6px;
+            padding: 20px;
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 1.5;
+            overflow: auto;
+            flex-grow: 1;
+        }
+        .sql-keyword {
+            color: #66d9ef;
+        }
+        .sql-string {
+            color: #a6e22e;
+        }
+        .sql-comment {
+            color: #75715e;
+            font-style: italic;
+        }
+        .sql-number {
+            color: #ae81ff;
+        }
+        .sql-operator {
+            color: #f92672;
+        }
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .step-number {
+            background-color: #0051C8;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .step-content {
+            flex: 1;
+        }
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .step-desc {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-points {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+        .key-points-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .key-points-icon {
+            margin-right: 10px;
+        }
+        .key-points-content {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .key-point-icon {
+            color: #fbbc04;
+            margin-right: 10px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        .table-preview {
+            background-color: #e8f0fe;
+            border: 2px solid #0051C8;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .table-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #0051C8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .table-icon {
+            margin-right: 10px;
+        }
+        .table-content {
+            font-size: 20px;
+            color: #333;
+        }
+        .table-structure {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+        .table-header {
+            background-color: #0051C8;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            font-weight: 600;
+        }
+        .table-row {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+        .table-cell {
+            padding: 10px 15px;
+            flex: 1;
+        }
+        .table-cell-type {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: #0051C8;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Projet final complet - partie 1</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">storage</i>
+                        Création de la base de données
+                    </h2>
+                    <div class="section-content">
+                        <p>• Créer une base de données pour notre projet</p>
+                        <p>• Utiliser <span class="highlight">phpMyAdmin</span> ou ligne de commande</p>
+                        <p>• Nom : <span class="highlight">livre_or</span></p>
+                    </div>
+                </div>
+                
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Créer la base</h4>
+                            <p class="step-desc">Via phpMyAdmin : "Nouvelle base de données" → "livre_or" → "Créer"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Créer la table</h4>
+                            <p class="step-desc">Nom : <span class="highlight">messages</span></p>
+                            <p class="step-desc">Nombre de colonnes : <span class="highlight">4</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Définir les colonnes</h4>
+                            <p class="step-desc">id, auteur, message, date_creation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-points-title">
+                        <i class="material-icons key-points-icon">lightbulb</i>
+                        Points clés
+                    </div>
+                    <div class="key-points-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>L'<span class="highlight">id</span> doit être <span class="highlight">auto-incrémenté</span> et <span class="highlight">clé primaire</span></span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Choisir des <span class="highlight">types de données appropriés</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="code-block">
+                    <h3 class="code-title">Code SQL pour créer la table</h3>
+                    <div class="code-container">
+                        <span class="sql-comment">-- Création de la table messages</span><br>
+                        <span class="sql-keyword">CREATE TABLE</span> messages (<br>
+                        &nbsp;&nbsp;id <span class="sql-keyword">INT</span> <span class="sql-keyword">AUTO_INCREMENT</span> <span class="sql-keyword">PRIMARY KEY</span>,<br>
+                        &nbsp;&nbsp;auteur <span class="sql-keyword">VARCHAR</span>(<span class="sql-number">50</span>) <span class="sql-keyword">NOT NULL</span>,<br>
+                        &nbsp;&nbsp;message <span class="sql-keyword">TEXT</span> <span class="sql-keyword">NOT NULL</span>,<br>
+                        &nbsp;&nbsp;date_creation <span class="sql-keyword">DATETIME</span> <span class="sql-keyword">DEFAULT</span> <span class="sql-keyword">CURRENT_TIMESTAMP</span><br>
+                        );<br>
+                        <br>
+                        <span class="sql-comment">-- Insertion de données de test</span><br>
+                        <span class="sql-keyword">INSERT INTO</span> messages (auteur, message) <span class="sql-keyword">VALUES</span> (<br>
+                        &nbsp;&nbsp;<span class="sql-string">'Alice'</span>, <span class="sql-string">'Bonjour à tous !'</span><br>
+                        );<br>
+                        <br>
+                        <span class="sql-keyword">INSERT INTO</span> messages (auteur, message) <span class="sql-keyword">VALUES</span> (<br>
+                        &nbsp;&nbsp;<span class="sql-string">'Bob'</span>, <span class="sql-string">'Merci pour cette présentation !'</span><br>
+                        );<br>
+                        <br>
+                        <span class="sql-comment">-- Vérification des données</span><br>
+                        <span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> messages <span class="sql-keyword">ORDER BY</span> date_creation <span class="sql-keyword">DESC</span>;
+                    </div>
+                </div>
+                
+                <div class="table-preview">
+                    <h3 class="table-title">
+                        <i class="material-icons table-icon">table_chart</i>
+                        Structure de la table
+                    </h3>
+                    <div class="table-structure">
+                        <div class="table-header">
+                            <div class="table-cell">Nom du champ</div>
+                            <div class="table-cell">Type</div>
+                            <div class="table-cell">Options</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-cell">id</div>
+                            <div class="table-cell table-cell-type">INT</div>
+                            <div class="table-cell">AUTO_INCREMENT, PRIMARY KEY</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-cell">auteur</div>
+                            <div class="table-cell table-cell-type">VARCHAR(50)</div>
+                            <div class="table-cell">NOT NULL</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-cell">message</div>
+                            <div class="table-cell table-cell-type">TEXT</div>
+                            <div class="table-cell">NOT NULL</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-cell">date_creation</div>
+                            <div class="table-cell table-cell-type">DATETIME</div>
+                            <div class="table-cell">DEFAULT CURRENT_TIMESTAMP</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page33.html" class="nav-arrow nav-left">←</a>
+    <a href="page35.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

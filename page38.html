@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreurs courantes débutants</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #0051C8;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .error-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+        .error-card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid #ea4335;
+            height: 100%;
+        }
+        .error-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .error-icon {
+            color: #ea4335;
+            font-size: 32px;
+            margin-right: 15px;
+        }
+        .error-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+        .error-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            color: #ea4335;
+            font-weight: 600;
+        }
+        .example-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+        .example-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .example-code {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .solution {
+            background-color: #e6f4ea;
+            border: 2px solid #34a853;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .solution-icon {
+            color: #34a853;
+            margin-right: 10px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .solution-content {
+            font-size: 18px;
+            color: #333;
+        }
+        .key-points {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 30px;
+        }
+        .key-points-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .key-points-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .key-points-content {
+            font-size: 20px;
+            color: #555;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .key-point-icon {
+            color: #fbbc04;
+            margin-right: 10px;
+            font-size: 20px;
+            margin-top: 3px;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Erreurs courantes débutants</h1>
+        </div>
+        <div class="content">
+            <div class="error-grid">
+                <div class="error-card">
+                    <div class="error-header">
+                        <i class="material-icons error-icon">account_tree</i>
+                        <h2 class="error-title">Confusion base/table</h2>
+                    </div>
+                    <div class="error-content">
+                        <p>• <span class="highlight">Base de données</span> : conteneur principal</p>
+                        <p>• <span class="highlight">Table</span> : structure pour stocker des données similaires</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3 class="example-title">Erreur fréquente</h3>
+                        <div class="example-code">
+                            SELECT * FROM blog;<br>
+                            <span style="color: #ea4335;">// Erreur: 'blog' est une base, pas une table</span>
+                        </div>
+                    </div>
+                    
+                    <div class="solution">
+                        <i class="material-icons solution-icon">lightbulb</i>
+                        <div class="solution-content">
+                            <p>Utilisez <span class="highlight">base.table</span> pour spécifier la table : <span class="highlight">blog.messages</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="error-card">
+                    <div class="error-header">
+                        <i class="material-icons error-icon">code</i>
+                        <h2 class="error-title">Erreurs de syntaxe SQL</h2>
+                    </div>
+                    <div class="error-content">
+                        <p>• Oubli de <span class="highlight">guillemets</span> pour les chaînes</p>
+                        <p>• Oubli de <span class="highlight">virgules</span> entre les colonnes</p>
+                        <p>• Mauvais <span class="highlight">ordre</span> des instructions</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3 class="example-title">Erreur fréquente</h3>
+                        <div class="example-code">
+                            INSERT INTO messages (auteur, message) VALUES (Alice, Bonjour);<br>
+                            <span style="color: #ea4335;">// Erreur: guillemets manquants</span>
+                        </div>
+                    </div>
+                    
+                    <div class="solution">
+                        <i class="material-icons solution-icon">lightbulb</i>
+                        <div class="solution-content">
+                            <p>Entourez les chaînes de <span class="highlight">guillemets simples</span> : <span class="highlight">'Alice'</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="error-card">
+                    <div class="error-header">
+                        <i class="material-icons error-icon">link_off</i>
+                        <h2 class="error-title">Problème de connexion</h2>
+                    </div>
+                    <div class="error-content">
+                        <p>• <span class="highlight">Mauvais identifiants</span> de connexion</p>
+                        <p>• <span class="highlight">Serveur MySQL</span> non démarré</p>
+                        <p>• <span class="highlight">Base de données</span> inexistante</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3 class="example-title">Erreur fréquente</h3>
+                        <div class="example-code">
+                            $pdo = new PDO("mysql:host=localhost;dbname=blog", 'root', 'password');<br>
+                            <span style="color: #ea4335;">// Erreur: mot de passe incorrect</span>
+                        </div>
+                    </div>
+                    
+                    <div class="solution">
+                        <i class="material-icons solution-icon">lightbulb</i>
+                        <div class="solution-content">
+                            <p>Vérifiez les <span class="highlight">identifiants</span> et assurez-vous que MySQL est <span class="highlight">démarré</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="error-card">
+                    <div class="error-header">
+                        <i class="material-icons error-icon">error_outline</i>
+                        <h2 class="error-title">Autres erreurs courantes</h2>
+                    </div>
+                    <div class="error-content">
+                        <p>• <span class="highlight">Noms de tables/champs</span> incorrects</p>
+                        <p>• <span class="highlight">Types de données</span> incompatibles</p>
+                        <p>• <span class="highlight">Caractères spéciaux</span> non échappés</p>
+                    </div>
+                    
+                    <div class="example-box">
+                        <h3 class="example-title">Erreur fréquente</h3>
+                        <div class="example-code">
+                            SELECT * FROM Messages;<br>
+                            <span style="color: #ea4335;">// Erreur: la table s'appelle 'messages' (minuscule)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="solution">
+                        <i class="material-icons solution-icon">lightbulb</i>
+                        <div class="solution-content">
+                            <p>Respectez la <span class="highlight">casse</span> et utilisez des <span class="highlight">requêtes préparées</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-points">
+                <div class="key-points-title">
+                    <i class="material-icons key-points-icon">tips_and_updates</i>
+                    Comment éviter ces erreurs
+                </div>
+                <div class="key-points-content">
+                    <div class="key-point">
+                        <i class="material-icons key-point-icon">check_circle</i>
+                        <span>Lisez attentivement les <span class="highlight">messages d'erreur</span></span>
+                    </div>
+                    <div class="key-point">
+                        <i class="material-icons key-point-icon">check_circle</i>
+                        <span>Testez vos requêtes dans <span class="highlight">phpMyAdmin</span> d'abord</span>
+                    </div>
+                    <div class="key-point">
+                        <i class="material-icons key-point-icon">check_circle</i>
+                        <span>Utilisez un <span class="highlight">éditeur avec coloration syntaxique</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page37.html" class="nav-arrow nav-left">←</a>
+    <a href="page39.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet final complet - partie 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #0051C8;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #0051C8;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #0051C8;
+            font-weight: 600;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .code-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .code-container {
+            background-color: #2d2d2d;
+            border-radius: 6px;
+            padding: 20px;
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 1.5;
+            overflow: auto;
+            flex-grow: 1;
+        }
+        .php-tag {
+            color: #f92672;
+        }
+        .php-keyword {
+            color: #66d9ef;
+        }
+        .php-string {
+            color: #a6e22e;
+        }
+        .php-comment {
+            color: #75715e;
+            font-style: italic;
+        }
+        .php-number {
+            color: #ae81ff;
+        }
+        .php-variable {
+            color: #fd971f;
+        }
+        .php-operator {
+            color: #f92672;
+        }
+        .html-tag {
+            color: #f92672;
+        }
+        .html-attr {
+            color: #a6e22e;
+        }
+        .html-value {
+            color: #e6db74;
+        }
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .step-number {
+            background-color: #0051C8;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .step-content {
+            flex: 1;
+        }
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .step-desc {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-points {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+        .key-points-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .key-points-icon {
+            margin-right: 10px;
+        }
+        .key-points-content {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .key-point-icon {
+            color: #fbbc04;
+            margin-right: 10px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        .messages-preview {
+            background-color: #e8f0fe;
+            border: 2px solid #0051C8;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .messages-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #0051C8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .messages-icon {
+            margin-right: 10px;
+        }
+        .messages-content {
+            font-size: 20px;
+            color: #333;
+        }
+        .message-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .message-author {
+            font-weight: 600;
+            color: #0051C8;
+        }
+        .message-date {
+            font-size: 14px;
+            color: #666;
+        }
+        .message-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Projet final complet - partie 3</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">visibility</i>
+                        Affichage des messages
+                    </h2>
+                    <div class="section-content">
+                        <p>• Récupérer les messages de la base de données</p>
+                        <p>• Afficher sous forme de <span class="highlight">liste</span></p>
+                        <p>• Trier par <span class="highlight">date décroissante</span></p>
+                    </div>
+                </div>
+                
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Connexion à la base</h4>
+                            <p class="step-desc">Établir la connexion avec PDO</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Requête SELECT</h4>
+                            <p class="step-desc">Récupérer tous les messages triés par date</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Affichage en HTML</h4>
+                            <p class="step-desc">Parcourir les résultats et afficher</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-points-title">
+                        <i class="material-icons key-points-icon">lightbulb</i>
+                        Bonnes pratiques
+                    </div>
+                    <div class="key-points-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Vérifier s'il y a des <span class="highlight">messages</span> avant d'afficher</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Formater la <span class="highlight">date</span> pour un affichage convivial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="code-block">
+                    <h3 class="code-title">Affichage des messages</h3>
+                    <div class="code-container">
+                        <span class="php-tag"><?php</span><br>
+                        <span class="php-comment">// Connexion à la base de données</span><br>
+                        <span class="php-keyword">try</span> {<br>
+                        &nbsp;&nbsp;<span class="php-variable">$pdo</span> = <span class="php-keyword">new</span> PDO(<span class="php-string">"mysql:host=localhost;dbname=livre_or"</span>, <span class="php-string">'root'</span>, <span class="php-string">''</span>);<br>
+                        &nbsp;&nbsp;<span class="php-variable">$pdo</span><span class="php-operator">-></span>setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);<br>
+                        <br>
+                        &nbsp;&nbsp;<span class="php-comment">// Récupération des messages</span><br>
+                        &nbsp;&nbsp;<span class="php-variable">$sql</span> = <span class="php-string">"SELECT * FROM messages ORDER BY date_creation DESC"</span>;<br>
+                        &nbsp;&nbsp;<span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span><span class="php-operator">-></span>prepare(<span class="php-variable">$sql</span>);<br>
+                        &nbsp;&nbsp;<span class="php-variable">$stmt</span><span class="php-operator">-></span>execute();<br>
+                        &nbsp;&nbsp;<span class="php-variable">$messages</span> = <span class="php-variable">$stmt</span><span class="php-operator">-></span>fetchAll(PDO::FETCH_ASSOC);<br>
+                        <br>
+                        &nbsp;&nbsp;<span class="php-comment">// Affichage des messages</span><br>
+                        &nbsp;&nbsp;<span class="php-keyword">if</span> (<span class="php-keyword">count</span>(<span class="php-variable">$messages</span>) <span class="php-operator">></span> <span class="php-number">0</span>) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">foreach</span> (<span class="php-variable">$messages</span> <span class="php-keyword">as</span> <span class="php-variable">$message</span>) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-comment">// Formatage de la date</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-variable">$date</span> = <span class="php-keyword">new</span> DateTime(<span class="php-variable">$message</span>[<span class="php-string">'date_creation'</span>]);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-variable">$dateFormatee</span> = <span class="php-variable">$date</span><span class="php-operator">-></span>format(<span class="php-string">'d/m/Y H:i'</span>);<br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-comment">// Affichage du message</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">'<div class="message">'</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">'<div class="message-header">'</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">'<span class="message-author">'</span> . <span class="php-variable">$message</span>[<span class="php-string">'auteur'</span>] . <span class="php-string">'</span>'</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">'<span class="message-date">'</span> . <span class="php-variable">$dateFormatee</span> . <span class="php-string">'</span>'</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">'</div>'</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">'<div class="message-text">'</span> . <span class="php-variable">$message</span>[<span class="php-string">'message'</span>] . <span class="php-string">'</div>'</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">'</div>'</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;} <span class="php-keyword">else</span> {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">'<p>Aucun message pour le moment.</p>'</span>;<br>
+                        &nbsp;&nbsp;}<br>
+                        } <span class="php-keyword">catch</span> (PDOException <span class="php-variable">$e</span>) {<br>
+                        &nbsp;&nbsp;<span class="php-keyword">echo</span> <span class="php-string">"Erreur: "</span> . <span class="php-variable">$e</span><span class="php-operator">-></span>getMessage();<br>
+                        }<br>
+                        <span class="php-tag">?></span>
+                    </div>
+                </div>
+                
+                <div class="messages-preview">
+                    <h3 class="messages-title">
+                        <i class="material-icons messages-icon">forum</i>
+                        Résultat affiché
+                    </h3>
+                    <div class="messages-content">
+                        <div class="message-item">
+                            <div class="message-header">
+                                <div class="message-author">Alice</div>
+                                <div class="message-date">15/10/2023 14:30</div>
+                            </div>
+                            <div class="message-text">Bonjour à tous !</div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-header">
+                                <div class="message-author">Bob</div>
+                                <div class="message-date">15/10/2023 14:32</div>
+                            </div>
+                            <div class="message-text">Merci pour cette présentation !</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page35.html" class="nav-arrow nav-left">←</a>
+    <a href="page37.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

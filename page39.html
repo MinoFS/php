@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition vers la suite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #0051C8;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #0051C8;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #0051C8;
+            font-weight: 600;
+        }
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .topic-card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #0051C8;
+        }
+        .topic-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .topic-icon {
+            color: #0051C8;
+            font-size: 32px;
+            margin-right: 15px;
+        }
+        .topic-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+        }
+        .topic-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .key-points {
+            background-color: #e6f4ea;
+            border-left: 4px solid #34a853;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 30px;
+        }
+        .key-points-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #34a853;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .key-points-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .key-points-content {
+            font-size: 20px;
+            color: #333;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .key-point-icon {
+            color: #34a853;
+            margin-right: 10px;
+            font-size: 20px;
+            margin-top: 3px;
+        }
+        .next-steps {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 30px;
+        }
+        .next-steps-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .next-steps-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .next-steps-content {
+            font-size: 20px;
+            color: #333;
+        }
+        .next-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .next-step-icon {
+            color: #ea8600;
+            margin-right: 10px;
+            font-size: 20px;
+            margin-top: 3px;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Transition vers la suite</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">security</i>
+                        Sécurité
+                    </h2>
+                    <div class="section-content">
+                        <p>• Protection contre les <span class="highlight">injections SQL</span></p>
+                        <p>• <span class="highlight">Validation</span> des entrées utilisateur</p>
+                        <p>• <span class="highlight">Échappement</span> des caractères spéciaux</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">code</i>
+                        Requêtes préparées
+                    </h2>
+                    <div class="section-content">
+                        <p>• Séparation du <span class="highlight">code</span> et des <span class="highlight">données</span></p>
+                        <p>• Protection contre les injections SQL</p>
+                        <p>• Amélioration des <span class="highlight">performances</span></p>
+                    </div>
+                </div>
+                
+                <div class="next-steps">
+                    <div class="next-steps-title">
+                        <i class="material-icons next-steps-icon">next_plan</i>
+                        Prochaines étapes
+                    </div>
+                    <div class="next-steps-content">
+                        <div class="next-step">
+                            <i class="material-icons next-step-icon">check_circle</i>
+                            <span>Pratique régulière avec des <span class="highlight">projets concrets</span></span>
+                        </div>
+                        <div class="next-step">
+                            <i class="material-icons next-step-icon">check_circle</i>
+                            <span>Explorer la <span class="highlight">documentation officielle</span></span>
+                        </div>
+                        <div class="next-step">
+                            <i class="material-icons next-step-icon">check_circle</i>
+                            <span>Rejoindre des <span class="highlight">communautés</span> de développeurs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">share</i>
+                        Jointures
+                    </h2>
+                    <div class="section-content">
+                        <p>• Combiner des données de <span class="highlight">plusieurs tables</span></p>
+                        <p>• <span class="highlight">INNER JOIN</span>, <span class="highlight">LEFT JOIN</span>, <span class="highlight">RIGHT JOIN</span></p>
+                        <p>• Optimisation des <span class="highlight">requêtes complexes</span></p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">web</i>
+                        Applications web complètes
+                    </h2>
+                    <div class="section-content">
+                        <p>• <span class="highlight">Architecture MVC</span> (Modèle-Vue-Contrôleur)</p>
+                        <p>• <span class="highlight">Gestion des sessions</span> et authentification</p>
+                        <p>• <span class="highlight">CRUD</span> (Create, Read, Update, Delete)</p>
+                    </div>
+                </div>
+                
+                <div class="topic-grid">
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <i class="material-icons topic-icon">psychology</i>
+                            <h3 class="topic-title">Pour aller plus loin</h3>
+                        </div>
+                        <div class="topic-content">
+                            <p>• <span class="highlight">ORM</span> (Object-Relational Mapping)</p>
+                            <p>• <span class="highlight">Frameworks PHP</span> (Laravel, Symfony)</p>
+                            <p>• <span class="highlight">API REST</span> et services web</p>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <div class="topic-header">
+                            <i class="material-icons topic-icon">school</i>
+                            <h3 class="topic-title">Ressources d'apprentissage</h3>
+                        </div>
+                        <div class="topic-content">
+                            <p>• <span class="highlight">Documentation</span> MySQL et PHP</p>
+                            <p>• <span class="highlight">Tutoriels</span> interactifs en ligne</p>
+                            <p>• <span class="highlight">Projets open source</span> à étudier</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-points-title">
+                        <i class="material-icons key-points-icon">lightbulb</i>
+                        Points clés à retenir
+                    </div>
+                    <div class="key-points-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>La <span class="highlight">sécurité</span> doit être une priorité dès le début</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Les <span class="highlight">requêtes préparées</span> sont essentielles</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>La <span class="highlight">pratique</span> est la clé de la maîtrise</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page38.html" class="nav-arrow nav-left">←</a>
+    <a href="page40.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

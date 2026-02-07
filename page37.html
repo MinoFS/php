@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonnes pratiques de base</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #0051C8;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #0051C8;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #0051C8;
+            font-weight: 600;
+        }
+        .practice-box {
+            background-color: #e8f0fe;
+            border: 2px solid #0051C8;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .practice-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #0051C8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .practice-icon {
+            margin-right: 10px;
+        }
+        .practice-content {
+            font-size: 20px;
+            color: #333;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .code-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .code-container {
+            background-color: #2d2d2d;
+            border-radius: 6px;
+            padding: 20px;
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 1.5;
+            overflow: auto;
+            flex-grow: 1;
+        }
+        .sql-keyword {
+            color: #66d9ef;
+        }
+        .sql-string {
+            color: #a6e22e;
+        }
+        .sql-comment {
+            color: #75715e;
+            font-style: italic;
+        }
+        .sql-number {
+            color: #ae81ff;
+        }
+        .sql-operator {
+            color: #f92672;
+        }
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .example-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .example-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .example-icon {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        .good-icon {
+            color: #34a853;
+        }
+        .bad-icon {
+            color: #ea4335;
+        }
+        .example-code {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .key-points {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+        .key-points-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .key-points-icon {
+            margin-right: 10px;
+        }
+        .key-points-content {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .key-point-icon {
+            color: #fbbc04;
+            margin-right: 10px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Bonnes pratiques de base</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="practice-box">
+                    <h3 class="practice-title">
+                        <i class="material-icons practice-icon">table_chart</i>
+                        Nommage des tables
+                    </h3>
+                    <div class="practice-content">
+                        <p>• Utiliser des noms <span class="highlight">descriptifs</span> et <span class="highlight">singuliers</span></p>
+                        <p>• Privilégier le <span class="highlight">snake_case</span> (mots_séparés_par_des_tirets_bas)</p>
+                        <p>• Éviter les espaces et caractères spéciaux</p>
+                    </div>
+                </div>
+                
+                <div class="practice-box">
+                    <h3 class="practice-title">
+                        <i class="material-icons practice-icon">text_fields</i>
+                        Nommage des champs
+                    </h3>
+                    <div class="practice-content">
+                        <p>• Utiliser des noms <span class="highlight">clairs</span> et <span class="highlight">précis</span></p>
+                        <p>• <span class="highlight">snake_case</span> pour les noms de champs</p>
+                        <p>• Éviter les abréviations ambiguës</p>
+                    </div>
+                </div>
+                
+                <div class="example-grid">
+                    <div class="example-item">
+                        <div class="example-title">
+                            <i class="material-icons example-icon good-icon">check_circle</i>
+                            Bon
+                        </div>
+                        <div class="example-code">
+                            messages<br>
+                            utilisateurs<br>
+                            date_creation<br>
+                            nom_utilisateur
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <div class="example-title">
+                            <i class="material-icons example-icon bad-icon">cancel</i>
+                            Mauvais
+                        </div>
+                        <div class="example-code">
+                            msg<br>
+                            users<br>
+                            dtCrea<br>
+                            nomU
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-points-title">
+                        <i class="material-icons key-points-icon">lightbulb</i>
+                        Conseils supplémentaires
+                    </div>
+                    <div class="key-points-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Soyez <span class="highlight">cohérent</span> dans votre nommage</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span>Utilisez des <span class="highlight">commentaires</span> pour expliquer le code complexe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="practice-box">
+                    <h3 class="practice-title">
+                        <i class="material-icons practice-icon">format_align_left</i>
+                        Indentation SQL
+                    </h3>
+                    <div class="practice-content">
+                        <p>• Indenter pour <span class="highlight">améliorer la lisibilité</span></p>
+                        <p>• Mettre les mots-clés SQL en <span class="highlight">majuscules</span></p>
+                        <p>• Structurer les requêtes complexes</p>
+                    </div>
+                </div>
+                
+                <div class="code-block">
+                    <h3 class="code-title">Exemple de requête bien formatée</h3>
+                    <div class="code-container">
+                        <span class="sql-comment">-- Requête SELECT bien formatée</span><br>
+                        <span class="sql-keyword">SELECT</span><br>
+                        &nbsp;&nbsp;id,<br>
+                        &nbsp;&nbsp;nom,<br>
+                        &nbsp;&nbsp;email,<br>
+                        &nbsp;&nbsp;date_creation<br>
+                        <span class="sql-keyword">FROM</span><br>
+                        &nbsp;&nbsp;utilisateurs<br>
+                        <span class="sql-keyword">WHERE</span><br>
+                        &nbsp;&nbsp;age <span class="sql-operator">></span> <span class="sql-number">18</span><br>
+                        &nbsp;&nbsp;<span class="sql-keyword">AND</span><br>
+                        &nbsp;&nbsp;statut <span class="sql-operator">=</span> <span class="sql-string">'actif'</span><br>
+                        <span class="sql-keyword">ORDER BY</span><br>
+                        &nbsp;&nbsp;date_creation <span class="sql-keyword">DESC</span><br>
+                        <span class="sql-keyword">LIMIT</span><br>
+                        &nbsp;&nbsp;<span class="sql-number">10</span>;
+                    </div>
+                </div>
+                
+                <div class="example-grid">
+                    <div class="example-item">
+                        <div class="example-title">
+                            <i class="material-icons example-icon good-icon">check_circle</i>
+                            Bon
+                        </div>
+                        <div class="example-code">
+                            <span class="sql-keyword">INSERT INTO</span> messages (auteur, message)<br>
+                            <span class="sql-keyword">VALUES</span> (<span class="sql-string">'Alice'</span>, <span class="sql-string">'Bonjour'</span>);
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <div class="example-title">
+                            <i class="material-icons example-icon bad-icon">cancel</i>
+                            Mauvais
+                        </div>
+                        <div class="example-code">
+                            insert into messages(auteur,message)<br>
+                            values('Alice','Bonjour');
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page36.html" class="nav-arrow nav-left">←</a>
+    <a href="page38.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>

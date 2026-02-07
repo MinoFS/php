@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lire des données en PHP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #0051C8;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            color: #0051C8;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .section-content {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+        .highlight {
+            color: #0051C8;
+            font-weight: 600;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .code-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .code-container {
+            background-color: #2d2d2d;
+            border-radius: 6px;
+            padding: 20px;
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 1.5;
+            overflow: auto;
+            flex-grow: 1;
+        }
+        .php-tag {
+            color: #f92672;
+        }
+        .php-keyword {
+            color: #66d9ef;
+        }
+        .php-string {
+            color: #a6e22e;
+        }
+        .php-comment {
+            color: #75715e;
+            font-style: italic;
+        }
+        .php-number {
+            color: #ae81ff;
+        }
+        .php-variable {
+            color: #fd971f;
+        }
+        .php-operator {
+            color: #f92672;
+        }
+        .html-tag {
+            color: #f92672;
+        }
+        .html-attr {
+            color: #a6e22e;
+        }
+        .html-value {
+            color: #e6db74;
+        }
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .step-number {
+            background-color: #0051C8;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .step-content {
+            flex: 1;
+        }
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .step-desc {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-points {
+            background-color: #fef7e0;
+            border-left: 4px solid #fbbc04;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+        .key-points-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ea8600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .key-points-icon {
+            margin-right: 10px;
+        }
+        .key-points-content {
+            font-size: 18px;
+            color: #555;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .key-point-icon {
+            color: #fbbc04;
+            margin-right: 10px;
+            font-size: 18px;
+            margin-top: 3px;
+        }
+        .example-output {
+            background-color: #e8f0fe;
+            border: 2px solid #0051C8;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .output-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0051C8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .output-icon {
+            margin-right: 8px;
+        }
+        .output-content {
+            font-size: 16px;
+            color: #333;
+            font-family: 'Courier New', monospace;
+        }
+        .nav-arrow {
+            position: fixed;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .nav-left {
+            left: 20px;
+        }
+        .nav-right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Lire des données en PHP</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section">
+                    <h2 class="section-title">
+                        <i class="material-icons section-icon">visibility</i>
+                        Récupérer les résultats
+                    </h2>
+                    <div class="section-content">
+                        <p>• Utiliser <span class="highlight">PDO</span> pour exécuter une requête SELECT</p>
+                        <p>• Méthodes de récupération des données</p>
+                        <p>• <span class="highlight">fetch()</span> : récupère une ligne à la fois</p>
+                        <p>• <span class="highlight">fetchAll()</span> : récupère toutes les lignes</p>
+                    </div>
+                </div>
+                
+                <div class="process-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Exécuter la requête</h4>
+                            <p class="step-desc">Préparer et exécuter la commande SQL</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Récupérer les données</h4>
+                            <p class="step-desc">Utiliser fetch() ou fetchAll()</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Afficher en HTML</h4>
+                            <p class="step-desc">Intégrer les données dans la page</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-points-title">
+                        <i class="material-icons key-points-icon">lightbulb</i>
+                        Modes de récupération
+                    </div>
+                    <div class="key-points-content">
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span><span class="highlight">PDO::FETCH_ASSOC</span> : tableau associatif</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span><span class="highlight">PDO::FETCH_OBJ</span> : objet</span>
+                        </div>
+                        <div class="key-point">
+                            <i class="material-icons key-point-icon">check_circle</i>
+                            <span><span class="highlight">PDO::FETCH_NUM</span> : tableau indexé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="code-block">
+                    <h3 class="code-title">Exemple complet de lecture</h3>
+                    <div class="code-container">
+                        <span class="php-tag"><?php</span><br>
+                        <br>
+                        <span class="php-comment">// Connexion à la base de données</span><br>
+                        <span class="php-variable">$pdo</span> = <span class="php-keyword">new</span> PDO(<span class="php-string">"mysql:host=localhost;dbname=blog"</span>, <span class="php-string">'root'</span>, <span class="php-string">''</span>);<br>
+                        <span class="php-variable">$pdo</span><span class="php-operator">-></span>setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);<br>
+                        <br>
+                        <span class="php-comment">// Requête pour récupérer tous les messages</span><br>
+                        <span class="php-variable">$sql</span> = <span class="php-string">"SELECT * FROM messages ORDER BY date_creation DESC"</span>;<br>
+                        <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span><span class="php-operator">-></span>prepare(<span class="php-variable">$sql</span>);<br>
+                        <span class="php-variable">$stmt</span><span class="php-operator">-></span>execute();<br>
+                        <br>
+                        <span class="php-comment">// Récupération des résultats</span><br>
+                        <span class="php-variable">$messages</span> = <span class="php-variable">$stmt</span><span class="php-operator">-></span>fetchAll(PDO::FETCH_ASSOC);<br>
+                        <br>
+                        <span class="php-tag">?></span><br>
+                        <br>
+                        <span class="html-tag"><!DOCTYPE html></span><br>
+                        <span class="html-tag"><html></span><br>
+                        <span class="html-tag"><head></span><br>
+                          <span class="html-tag"><title></span>Messages<span class="html-tag"></title></span><br>
+                        <span class="html-tag"></head></span><br>
+                        <span class="html-tag"><body></span><br>
+                          <span class="html-tag"><h1></span>Messages<span class="html-tag"></h1></span><br>
+                        <br>
+                          <span class="php-tag"><?php</span> <span class="php-keyword">if</span> (<span class="php-keyword">empty</span>(<span class="php-variable">$messages</span>)) { <span class="php-tag">?></span><br>
+                            <span class="html-tag"><p></span>Aucun message pour le moment.<span class="html-tag"></p></span><br>
+                          <span class="php-tag"><?php</span> } <span class="php-keyword">else</span> { <span class="php-tag">?></span><br>
+                            <span class="html-tag"><ul></span><br>
+                              <span class="php-tag"><?php</span> <span class="php-keyword">foreach</span> (<span class="php-variable">$messages</span> <span class="php-keyword">as</span> <span class="php-variable">$message</span>) { <span class="php-tag">?></span><br>
+                                <span class="html-tag"><li></span><br>
+                                  <span class="html-tag"><strong></span><span class="php-tag"><?=</span> <span class="php-variable">$message</span>[<span class="php-string">'auteur'</span>] <span class="php-tag">?></span><span class="html-tag"></strong></span><br>
+                                  <span class="html-tag"><p></span><span class="php-tag"><?=</span> <span class="php-variable">$message</span>[<span class="php-string">'message'</span>] <span class="php-tag">?></span><span class="html-tag"></p></span><br>
+                                  <span class="html-tag"><small></span><span class="php-tag"><?=</span> <span class="php-variable">$message</span>[<span class="php-string">'date_creation'</span>] <span class="php-tag">?></span><span class="html-tag"></small></span><br>
+                                <span class="html-tag"></li></span><br>
+                              <span class="php-tag"><?php</span> } <span class="php-tag">?></span><br>
+                            <span class="html-tag"></ul></span><br>
+                          <span class="php-tag"><?php</span> } <span class="php-tag">?></span><br>
+                        <span class="html-tag"></body></span><br>
+                        <span class="html-tag"></html></span>
+                    </div>
+                    
+                    <div class="example-output">
+                        <div class="output-title">
+                            <i class="material-icons output-icon">visibility</i>
+                            Résultat affiché
+                        </div>
+                        <div class="output-content">
+                            <div><strong>Alice</strong></div>
+                            <div>Bonjour à tous !</div>
+                            <div><small>2023-10-15 14:30:22</small></div>
+                            <br>
+                            <div><strong>Bob</strong></div>
+                            <div>Merci pour l'information</div>
+                            <div><small>2023-10-15 14:32:15</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="page32.html" class="nav-arrow nav-left">←</a>
+    <a href="page34.html" class="nav-arrow nav-right">→</a>
+</body>
+</html>
